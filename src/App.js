@@ -17,25 +17,23 @@ class App extends React.Component {
       items: [],
       isLoaded: false,
     }
-    this._isMounted = false;
   }
+  
+  _isMounted = false;
 
-  async getJSON() {
-    await fetch(`https://api.hypixel.net/skyblock/bazaar?key=${API_KEY}&name=${playerUUID}`) // back ticks to use ${}
-      .then(res => res.json()) // take our response (in bytes) and turn it to a JSON
-      .then(data => {
+  componentDidMount() { // this method runs after the render() method, then updates the render method
+    this._isMounted = true;fetch(`https://api.hypixel.net/skyblock/bazaar?key=${API_KEY}&name=${playerUUID}`) // back ticks to use ${}
+    .then(res => res.json()) // take our response (in bytes) and turn it to a JSON
+    .then(data => {
+      if(this._isMounted) {
         this.setState({
           isLoaded: true,
           items: data,
         });
         console.log(data);
-      })
-      .catch(error => console.log("Network Error", error));
-  }
-
-  componentDidMount() { // this method runs after the render() method, then updates the render method
-    this._isMounted = true;
-    this._isMounted && this.getJSON();
+      }
+    })
+    .catch(error => console.log("Network Error", error));
   }
 
   componentWillUnmount() {
@@ -53,14 +51,7 @@ class App extends React.Component {
     } else {
       return (
         <div className = "App">
-          <ul>
-            {/* {item.map(item => ( // map function creates a new array with the 
-                                 // result of every return in the array element
-              <li key = {item.id}>
-                Name: {item.name} | Email: {item.email}
-              </li>
-            ))}; */}
-          </ul>
+          Data received!
         </div>
       );
     }
