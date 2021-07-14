@@ -12,10 +12,7 @@ class Navbar extends React.Component{
     render(){
       return(
         <nav className="NavbarItems">
-          <h1 className="logo">Skyblock tracker<i className="logo"></i></h1>
-            <div className="icon" onClick={this.handleClick}>
-              
-            </div>
+          <h1 className="logo">Skyblock<i className="logo"></i></h1>
           <ul className="nav-menu">
             {MenuItems.map((item,index)=>{
                 return(
