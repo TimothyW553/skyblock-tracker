@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Navbar from "./Components/Navbar/Navbar"
 
 const fetch = require('node-fetch');
 let API_FILE = require('./API_KEY.json');
@@ -22,7 +23,8 @@ class App extends React.Component {
   _isMounted = false;
 
   componentDidMount() { // this method runs after the render() method, then updates the render method
-    this._isMounted = true;fetch(`https://api.hypixel.net/skyblock/bazaar?key=${API_KEY}&name=${playerUUID}`) // back ticks to use ${}
+    this._isMounted = true;
+    fetch(`https://api.hypixel.net/skyblock/bazaar?key=${API_KEY}&name=${playerUUID}`) // back ticks to use ${}
     .then(res => res.json()) // take our response (in bytes) and turn it to a JSON
     .then(data => {
       if(this._isMounted) {
@@ -46,12 +48,14 @@ class App extends React.Component {
 
     if(!isLoaded) {
       return (
-        <div>Loading...</div>
+          <div>
+            Loading...
+          </div>
       );
     } else {
       return (
         <div className = "App">
-          Data received!
+          <Navbar/>
         </div>
       );
     }
