@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Navbar from "./Components/Navbar/Navbar"
+import Itemdisplay from "./Components/Itemdisplay/Itemdisplay"
 
 const fetch = require('node-fetch');
 let API_FILE = require('./API_KEY.json');
@@ -32,7 +33,7 @@ class App extends React.Component {
           isLoaded: true,
           items: data,
         });
-        console.log(data);
+
       }
     })
     .catch(error => console.log("Network Error", error));
@@ -43,9 +44,7 @@ class App extends React.Component {
   }
 
   render() {
-
     let { isLoaded, item } = this.state;
-
     if(!isLoaded) {
       return (
           <div>
@@ -56,6 +55,7 @@ class App extends React.Component {
       return (
         <div className = "App">
           <Navbar/>
+          <Itemdisplay dataParentToChild={this.state.items}/>
         </div>
       );
     }
