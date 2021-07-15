@@ -21,5 +21,25 @@
     margin-left: 50px;
     text-align: left;
     display:block;
-    text-decoration: none;
+}
+.item-name{
+    display: flex;
+}
+.item-price{
+    text-align: left;
+    display:flex;
+    margin-top: -21px;
+    margin-left: 500px;
+    justify-content: left;
+}
+.item-name, .quick-buy, .quick-sell, .total-volume{
+    float:left;
+    width:25%;
+    margin-top: 30px;
+}
+
+
+.label1, .label2, .label3, .label4{
+    float:left;
+    width: 25%;
 }
