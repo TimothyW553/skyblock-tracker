@@ -1,21 +1,20 @@
 import React from 'react';
 import Navbar from '../Components/Navbar/Navbar';
 
-class AuctionHouse extends React.Component {
+class Bazaar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
     }
   }
-
   render() {
-    return(
-      <div className = "AuctionHouse">
+    return (
+      <div className = "Bazaar">
         <Navbar />
-        <h1>Who's ready to auction?</h1>
+        <h1>Bazaar things are going on...</h1>
       </div>
     );
   }
 }
 
-export default AuctionHouse;
+export default Bazaar;

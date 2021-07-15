@@ -4,6 +4,7 @@ import Navbar from './Components/Navbar/Navbar';
 import MainPage from './Pages/index.jsx';
 import NotFoundPage from './Pages/404.jsx';
 import AuctionHouse from './Pages/auction-house.jsx';
+import Bazaar from './Pages/bazaar.jsx';
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
 
 const fetch = require('node-fetch');
@@ -58,13 +59,13 @@ class App extends React.Component {
       );
     } else {
       return (
-        // <div className = "App">
-        // </div>
         <Router>
           <Switch>
             <Route exact path = "/" component = { MainPage } />
-            <Route exact path = "/404" component = { NotFoundPage } />
+            <Route exact path = "/Home" component = { MainPage } />
+            <Route exact path = "/Bazaar" component = { Bazaar } />
             <Route exact path = "/Auction" component = { AuctionHouse } />
+            <Route exact path = "/404" component = { NotFoundPage } />
             <Redirect to = "/404" />
           </Switch>
         </Router>
