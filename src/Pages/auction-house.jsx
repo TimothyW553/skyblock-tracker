@@ -1,21 +1,15 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Navbar from './Components/Navbar/Navbar';
-import MainPage from './Pages/index.jsx';
-import NotFoundPage from './Pages/404.jsx';
-import AuctionHouse from './Pages/auction-house.jsx';
-import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
+import Navbar from '../Components/Navbar/Navbar';
 
 const fetch = require('node-fetch');
-let API_FILE = require('./API_KEY.json');
+let API_FILE = require('../API_KEY.json');
 
 let API_KEY = API_FILE["API_KEY"];
 
 const playerName = "CurrentlyKuais";
 const playerUUID = "9aa48ce9-4801-4678-b6f5-423288cddad0";
 
-
-class App extends React.Component {
+class AuctionHouse extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,7 +30,6 @@ class App extends React.Component {
           isLoaded: true,
           items: data,
         });
-        console.log(data);
       }
     })
     .catch(error => console.log("Network Error", error));
@@ -48,7 +41,8 @@ class App extends React.Component {
 
   render() {
 
-    let { isLoaded, item } = this.state;
+    let isLoaded = this.state.isLoaded;
+    let items = this.state.items.products;
 
     if(!isLoaded) {
       return (
@@ -57,25 +51,23 @@ class App extends React.Component {
           </div>
       );
     } else {
+      Object.keys(items).map((item, index) => {
+        console.log(items[item].quick_status.sellPrice);
+      });
       return (
-        // <div className = "App">
-        // </div>
-        <Router>
-          <Switch>
-            <Route exact path = "/" component = { MainPage } />
-            <Route exact path = "/404" component = { NotFoundPage } />
-            <Route exact path = "/Auction" component = { AuctionHouse } />
-            <Redirect to = "/404" />
-          </Switch>
-        </Router>
+        <div className = "AuctionHouse">
+          <Navbar />
+          {Object.keys(items).map((item, index) => {
+            return (
+              <li key = {index}>
+                {items[item].product_id} - {items[item].quick_status.sellPrice}
+              </li>
+            );
+          })}
+        </div>
       );
     }
   }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
-
-export default App;
+export default AuctionHouse;
