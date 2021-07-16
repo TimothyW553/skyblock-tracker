@@ -6,13 +6,14 @@ class Navbar extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      isClicked: false,
+      isClicked: [false,false,false]
     }
   }
-  
-  handleClick=()=>{
-    this.setState({
-      isClicked: !this.state.isClicked
+  /*logic to highlight the clicked button, with a fucntion to update the setstate */
+  handleClick=(index)=>{
+    let arrvar=this.state.isClicked.fill(false)
+    arrvar[index]=true
+    this.setState({isClicked:arrvar},function(){
     })
   }
 
@@ -24,8 +25,11 @@ class Navbar extends React.Component{
           {MenuItems.map((item,index) => {
             return (
               <li key={index}> 
-                <a className={item.cName} href={item.url}>
-                  {item.title}
+              {/*logic to set background color of the button */}
+                <a href={item.url}>
+                 <button className={item.cName}  onClick={()=>this.handleClick(index)} style={this.state.isClicked[index]?{backgroundColor:'#6d76f7'}:{}}>
+                      {item.title}
+                  </button>
                 </a>
               </li>
             )

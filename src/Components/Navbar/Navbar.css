@@ -26,16 +26,27 @@
     margin-right: 2rem;
 }
 .nav-links{
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    padding: 5px 20px;
+    border-radius: 5px;
+    margin: 10px 0px;
+    font-family: 'MinecraftiaRegular';
+    cursor: pointer;
 }
+
 .nav-links:hover{
-    background-color:#6d76f7;
-    border-radius: 4px;
-    transition: all 0.2s ease-out;
+    background-color: #afb4fa;
+    transition: all ease-in;
+
+}
+.nav-links:target{
+    background-color: #6d76f7;
 }
 .fa-bars{
     color: #6d76f7;
+
 }
+
 
