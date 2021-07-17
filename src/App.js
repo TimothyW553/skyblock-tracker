@@ -46,6 +46,7 @@ class App extends React.Component {
   componentWillUnmount() {
     this._isMounted = false;
   }
+  
 
   render() {
 
@@ -63,7 +64,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path = "/" component = { MainPage } />
             <Route exact path = "/Home" component = { MainPage } />
-            <Route exact path = "/Bazaar" component = { Bazaar } />
+            <Route exact path = "/Bazaar" component = { Bazaar } component = {() => <Bazaar props={this.state.items}/>}/>
             <Route exact path = "/Auction" component = { AuctionHouse } />
             <Route exact path = "/404" component = { NotFoundPage } />
             <Redirect to = "/404" />

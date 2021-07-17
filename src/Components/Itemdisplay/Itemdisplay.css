@@ -1,0 +1,46 @@
+.item-display{
+
+    justify-content: center;
+
+}
+.item-text{
+    margin-top: 32px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.search-bar{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.displayed-items{
+    margin-top: 50px;
+    margin-left: 50px;
+    text-align: left;
+    display:block;
+}
+.item-name{
+    display: flex;
+}
+.item-price{
+    text-align: left;
+    display:flex;
+    margin-left: 500px;
+    justify-content: left;
+}
+.item-name, .quick-buy, .quick-sell, .total-buy-to-sell-volume{
+    float:left;
+    width:25%;
+    margin-top: 1%;
+    margin-left: 0%;
+    flex-direction: column;
+}
+
+
+.label1, .label2, .label3, .label4{
+    float:left;
+    width: 25%;
+}
