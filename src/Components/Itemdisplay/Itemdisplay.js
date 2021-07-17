@@ -30,8 +30,6 @@ class Itemdisplay extends React.Component{
             })
         })
         /*make a filtered data to display dynamically as the user types in the search bar*/
-
-
     }
 
     render(){
@@ -64,7 +62,7 @@ class Itemdisplay extends React.Component{
                             <a className="item-prices">
                                 <div className="quick-buy">{item[1].quick_status.buyPrice}</div>
                                 <div className="quick-sell">{item[1].quick_status.sellPrice}</div>
-                                <div className="total-volume">{item[1].quick_status.buyVolume+item[1].quick_status.sellVolume}</div>
+                                <div className="total-buy-to-sell-volume">buy: {item[1].quick_status.buyMovingWeek} sell: {item[1].quick_status.sellMovingWeek}</div>
                             </a>
                         </p>
                     ):
@@ -76,7 +74,7 @@ class Itemdisplay extends React.Component{
                             <a className="item-prices">
                                 <div className="quick-buy">{item[1].quick_status.buyPrice}</div>
                                 <div className="quick-sell">{item[1].quick_status.sellPrice}</div>
-                                <div className="total-volume">{item[1].quick_status.buyVolume+item[1].quick_status.sellVolume}</div>
+                                <div className="total-buy-to-sell-volume">buy: {item[1].quick_status.buyMovingWeek} sell: {item[1].quick_status.sellMovingWeek}</div>
                             </a>
                         </p>
                     )
