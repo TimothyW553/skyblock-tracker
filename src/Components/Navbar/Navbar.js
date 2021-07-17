@@ -1,5 +1,6 @@
 import React from 'react';
 import { MenuItems } from "./MenuItems";
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 class Navbar extends React.Component{
@@ -25,12 +26,7 @@ class Navbar extends React.Component{
           {MenuItems.map((item,index) => {
             return (
               <li key={index}> 
-              {/*logic to set background color of the button */}
-                <a href={item.url}>
-                 <button className={item.cName}  onClick={()=>this.handleClick(index)} style={this.state.isClicked[index]?{backgroundColor:'#6d76f7'}:{}}>
-                      {item.title}
-                  </button>
-                </a>
+                <Link to = {item.url} className = {item.cName}>{item.title}</Link>
               </li>
             )
           })}
