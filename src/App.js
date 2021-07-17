@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Navbar from "./Components/Navbar/Navbar"
 import Itemdisplay from "./Components/Itemdisplay/Itemdisplay"
+import Itemflipper from "./Components/Itemflipper/Itemflipper"
 
 const fetch = require('node-fetch');
 let API_FILE = require('./API_KEY.json');
@@ -55,6 +56,7 @@ class App extends React.Component {
       return (
         <div className = "App">
           <Navbar/>
+          <Itemflipper/>
           <Itemdisplay dataParentToChild={this.state.items}/>
         </div>
       );
