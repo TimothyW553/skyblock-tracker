@@ -7,7 +7,7 @@ class Itemdisplay extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            data:this.props.dataParentToChild,
+            data:this.props.dataPToC,
             search:'',
             filteredData:[]
         }
@@ -31,9 +31,8 @@ class Itemdisplay extends React.Component{
         })
         /*make a filtered data to display dynamically as the user types in the search bar*/
     }
-
+    
     render(){
-        console.log(this.state.data)
         return(
             <div className="item-display">
                 <div>
@@ -44,43 +43,40 @@ class Itemdisplay extends React.Component{
                         <input type="text" placeholder="Search" className="item-input" onChange={this.handleChange}/>
                     </form>
                 </div>
-                <div className="displayed-items">
-                    <a>
-                        <div className="label1">Item</div>
-                        <div className="label2">Quick Buy</div>
-                        <div className="label3">Quick Sell</div>
-                        <div className="label4">7 Day Total Volume</div>
-                    </a>
-                { 
-                /*ternary operator that checks if nothing is in the search, which will display all the items, and once the user starts typing,
-                it will switch to the filtered data*/
-                    this.state.search===""?Object.entries(this.state.data.products).map((item)=> 
-                        <p key={item}>
-                            <a className="item-name" href={"#"+item[1].product_id} style={{ textDecoration: 'none' }}>
-                                {item[1].product_id.replaceAll("_"," ")}
-                            </a>
-                            <a className="item-prices">
-                                <div className="quick-buy">{item[1].quick_status.buyPrice}</div>
-                                <div className="quick-sell">{item[1].quick_status.sellPrice}</div>
-                                <div className="total-buy-to-sell-volume">buy: {item[1].quick_status.buyMovingWeek} sell: {item[1].quick_status.sellMovingWeek}</div>
-                            </a>
-                        </p>
-                    ):
-                    this.state.filteredData.map((item)=> 
-                        <p key={item}>
-                            <a className="item-name" href={"#"+item[1].product_id} style={{ textDecoration: 'none' }}>
-                                {item[1].product_id.replaceAll("_"," ")}
-                            </a>
-                            <a className="item-prices">
-                                <div className="quick-buy">{item[1].quick_status.buyPrice}</div>
-                                <div className="quick-sell">{item[1].quick_status.sellPrice}</div>
-                                <div className="total-buy-to-sell-volume">buy: {item[1].quick_status.buyMovingWeek} sell: {item[1].quick_status.sellMovingWeek}</div>
-                            </a>
-                        </p>
-                    )
-                }
-                </div>
+                <table>
+                        <thead>
+                            <tr>
+                                <th >Item</th>
+                                <th >Quick Buy</th>
+                                <th >Quick Sell</th>
+                                <th >7 Day Total Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        { 
+                        /*ternary operator that checks if nothing is in the search, which will display all the items, and once the user starts typing,
+                        it will switch to the filtered data*/
+                            this.state.search===""?Object.entries(this.state.data.products).map((item)=> 
+                                <tr key={item}>
+                                    <td ><a href={"#"+item[1].product_id} style={{ textDecoration: 'none' }}>{item[1].product_id.replaceAll("_"," ")}</a></td>
+                                    <td >{item[1].quick_status.buyPrice}</td>
+                                    <td >{item[1].quick_status.sellPrice}</td>
+                                    <td >buy: {item[1].quick_status.buyMovingWeek} sell: {item[1].quick_status.sellMovingWeek}</td>
+                                </tr>
+                            ):
+                            this.state.filteredData.map((item)=> 
+                                <tr key={item} className="all-items">
+                                    <td ><a href={"#"+item[1].product_id} style={{ textDecoration: 'none' }}>{item[1].product_id.replaceAll("_"," ")}</a></td>
+                                    <td className="quick-buy">{item[1].quick_status.buyPrice}</td>
+                                    <td className="quick-sell">{item[1].quick_status.sellPrice}</td>
+                                    <td className="total-buy-to-sell-volume">buy: {item[1].quick_status.buyMovingWeek} sell: {item[1].quick_status.sellMovingWeek}</td>
+                                </tr>
+                            )
+                        }
+                        </tbody>
+                </table>
             </div>
+
 
         )
     }

@@ -1,16 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-<<<<<<< HEAD
-import Navbar from "./Components/Navbar/Navbar"
-import Itemdisplay from "./Components/Itemdisplay/Itemdisplay"
-=======
 import Navbar from './Components/Navbar/Navbar';
 import MainPage from './Pages/index.jsx';
 import NotFoundPage from './Pages/404.jsx';
 import AuctionHouse from './Pages/auction-house.jsx';
 import Bazaar from './Pages/bazaar.jsx';
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from 'react-router-dom';
->>>>>>> 89a282c4f3cf0522fdfb5ad74d42d10d688e21da
 
 const fetch = require('node-fetch');
 let API_FILE = require('./API_KEY.json');
@@ -42,7 +37,7 @@ class App extends React.Component {
           isLoaded: true,
           items: data,
         });
-
+        console.log(data);
       }
     })
     .catch(error => console.log("Network Error", error));
@@ -53,7 +48,9 @@ class App extends React.Component {
   }
 
   render() {
+
     let { isLoaded, item } = this.state;
+
     if(!isLoaded) {
       return (
           <div>
@@ -62,23 +59,16 @@ class App extends React.Component {
       );
     } else {
       return (
-<<<<<<< HEAD
-        <div className = "App">
-          <Navbar/>
-          <Itemdisplay dataParentToChild={this.state.items}/>
-        </div>
-=======
         <Router>
           <Switch>
             <Route exact path = "/" component = { MainPage } />
             <Route exact path = "/Home" component = { MainPage } />
-            <Route exact path = "/Bazaar" component = { Bazaar } />
+            <Route exact path = "/Bazaar" component = {() => <Bazaar dataForComponent={this.state.items}/>}/>
             <Route exact path = "/Auction" component = { AuctionHouse } />
             <Route exact path = "/404" component = { NotFoundPage } />
             <Redirect to = "/404" />
           </Switch>
         </Router>
->>>>>>> 89a282c4f3cf0522fdfb5ad74d42d10d688e21da
       );
     }
   }
