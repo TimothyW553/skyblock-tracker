@@ -17,9 +17,11 @@ table{
     text-align: left;
     border-collapse:separate; 
     border-spacing:15px;
+    border-radius: 4px;
 }
 td {
     background: #d2d2d2;
     text-align: left;
     vertical-align: middle;
+    border-radius: 4px;
   }
